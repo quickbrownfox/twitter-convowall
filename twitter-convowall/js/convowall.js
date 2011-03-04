@@ -1,21 +1,3 @@
-jQuery.fn.reverse = Array.prototype.reverse;
-String.prototype.linkify = function () {
-    return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&\?\/.=]+/g, function (m) {
-        return m.link(m);
-    });
-};
-String.prototype.linkuser = function () {
-    return this.replace(/[@]+[A-Za-z0-9-_]+/g, function (u) {
-        var username = u.replace("@", "")
-        return u.link("http://twitter.com/" + username);
-    });
-};
-String.prototype.linktag = function () {
-    return this.replace(/[#]+[A-Za-z0-9-_]+/, function (t) {
-        var tag = t.replace("#", "%23")
-        return t.link("http://search.twitter.com/search?q=" + tag);
-    });
-};
 
 
 
@@ -24,15 +6,14 @@ Convowall = (function($) {
 
     Convowall = {
         o: {
-            search: {},
-            limit: 6,
+            search: {
+                q:'#twitter or twitter',
+                lang: 'en'
+            },
+            limit: 10,
             theme: 'shorty',
             theme_path: window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/')),
-            interval: 2000,
-            theme_elements: {
-                page: '',
-                entry: ''
-            }
+            interval: 3000,
         },
         
         init: function(s) {
@@ -48,26 +29,15 @@ Convowall = (function($) {
         },
 
         loadTheme: function(theme) {
-            var that = this;
             this.loadThemeCSS(theme);
-            $.each(['page','entry'],function(i,file) {
-                that.loadThemeFile(theme,file);
-            });
-            
+            var url =this.o.theme_path+'/themes/'+this.o.theme+'/page.html.ejs';
+            var page = new EJS({
+                url: url
+            }).render(this.o);
+            $('body').append($(page));
         },
 
-        loadThemeFile: function(theme,file) {
-            var that = this;
-            var url = this.o.theme_path+'/themes/'+theme+'/'+file+'.html.ejs';
-            $.get(url,{},function(responseText,textStatus) {
-                if (textStatus == 'success') {
-                    that.o.theme_elements[file] = responseText;
-                } else {
-                    throw('Could not load file ' + url);
-                }
-            },'html');
-        },
-
+       
         loadThemeCSS: function(theme) {
             var url = this.o.theme_path+'/themes/'+theme+'/theme.css';
             $.get(url, function(css) {
@@ -81,6 +51,12 @@ Convowall = (function($) {
         update: function() {
             var that = this;
             var elem = $('#cw_content');
+            var template = this.o.theme_path+'/themes/'+this.o.theme+'/entry.html.ejs';
+           
+            var ejs = new EJS({
+                url: template
+            });
+
             this.search(this.o.search, function(results) {
                 if (!results || results.length == 0) return;
                 that.o.search.since_id = results[0].id_str;
@@ -90,14 +66,18 @@ Convowall = (function($) {
                 });
 
                 $(results.reverse()).each(function(i,result) {
-                    var div = $('<div></div>').addClass('entry').html(result.text).hide();
-                    elem.prepend(div);
-                    div.fadeIn('slow');
+                  
                     var entry_date = new Date(Date.parse(result.created_at));
-                    var vars = $.extend(result,{
-                       date: entry_date,
-                       date_str: entry_date.getHourse() + ':' + entry_date.getMinutes(),
+                    var data = $.extend(result,{
+                        date: entry_date,
                     });
+                  
+                    var entry = ejs.render(data);
+                    var div = $('<div></div>').addClass('entry').html(entry).hide();
+                    elem.prepend(div);
+                    
+                    
+                    div.fadeIn('slow');
                     
                 });
 
@@ -109,7 +89,7 @@ Convowall = (function($) {
 
         search: function(o,success) {
             var s = $.extend({
-                q:'twitter',
+                q:'',
                 lang:'en',
                 rpp:10,
                 since_id:-1,
@@ -122,8 +102,10 @@ Convowall = (function($) {
         }
     };
 
-    $.fn.convowall = function(elem,o) {
-        Convowall.init(o);
+    $.fn.convowall = function(o) {
+        $(document).ready(function() {
+            Convowall.init(o);
+        });
     };
 
     return Convowall;

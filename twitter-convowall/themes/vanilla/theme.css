@@ -1,0 +1,45 @@
+body,a
+{
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 28px;
+    color: #000;
+    text-decoration: none;
+}
+body
+{
+    background: fff;
+    height: 100%;
+    overflow: hidden;
+}
+.entry
+{
+    display: block;
+    clear: both;
+    padding: .6em 0 .6em 9px;
+    margin: .3em 0;
+}
+.entry img
+{
+    float: left;
+}
+.entry p.text
+{
+    margin: 0;
+    padding: 0;
+    padding-left: 100px;
+    padding-right:30px;
+    line-height: 40px;
+}
+.entry .who, .who a {
+    color:#555;
+    text-decoration:
+    none;font-weight: normal;
+}
+
+
+#cw_content {
+    float: left;
+    width:100%;
+    margin: 5px;
+    overflow:hidden;
+}
