@@ -15,29 +15,50 @@ Convowall = (function($) {
             theme_path: window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/')),
             interval: 3000,
         },
-        
-        init: function(s) {
+
+        timeout: null,
+        elem: null,
+
+        init: function(s,elem) {
+            this.elem = elem;
             this.o = $.extend(this.o,s);
             if (this.o.theme) {
                 this.loadTheme(this.o.theme);
             }
             this.start();
         },
-        
+
+        option: function(k,v) {
+            if (typeof k === 'object') {
+                this.o = $.extend(this.o,k);
+                return this.o;
+            } else if (typeof v !== 'undefined') {
+                this.o[k] = v;
+            }
+            return this.o[k];
+        },
+
         start: function() {
+            this.o.search.rpp = this.o.limit;
             this.update();
         },
 
         loadTheme: function(theme) {
+            this.loadThemeJS(theme);
             this.loadThemeCSS(theme);
             var url =this.o.theme_path+'/themes/'+this.o.theme+'/page.html.ejs';
             var page = new EJS({
                 url: url
             }).render(this.o);
             $('body').append($(page));
+           
         },
 
-       
+        loadThemeJS: function(theme) {
+            var url = this.o.theme_path+'/themes/'+theme+'/init.js';
+            $.getScript(url);
+        },
+
         loadThemeCSS: function(theme) {
             var url = this.o.theme_path+'/themes/'+theme+'/theme.css';
             $.get(url, function(css) {
@@ -50,7 +71,7 @@ Convowall = (function($) {
 
         update: function() {
             var that = this;
-            var elem = $('#cw_content');
+            var elem = this.elem;
             var template = this.o.theme_path+'/themes/'+this.o.theme+'/entry.html.ejs';
            
             var ejs = new EJS({
@@ -75,7 +96,6 @@ Convowall = (function($) {
                     var entry = ejs.render(data);
                     var div = $('<div></div>').addClass('entry').html(entry).hide();
                     elem.prepend(div);
-                    
                     
                     div.fadeIn('slow');
                     
@@ -103,9 +123,7 @@ Convowall = (function($) {
     };
 
     $.fn.convowall = function(o) {
-        $(document).ready(function() {
-            Convowall.init(o);
-        });
+        Convowall.init(o,this);
     };
 
     return Convowall;

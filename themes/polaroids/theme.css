@@ -12,12 +12,7 @@ body
     overflow: hidden;
 }
 
-#cw_content {
-    float: left;
-    width:100%;
-    margin: 5px;
-    overflow:hidden;
-}
+
 
 
 .entry
@@ -49,11 +44,16 @@ body
 }
 
 
-
+#cw_content {
+    float: left;
+    width:100%;
+    margin: 5px;
+    overflow:hidden;
+}
 #logo {
     position:fixed;
     bottom:0px;
-    background:url(themes/keynote/gradient.png) top left repeat-x;
+    background:url(themes/shortyawards/gradient.png) top left repeat-x;
     width:100%;
     height:220px;
     z-index:99;

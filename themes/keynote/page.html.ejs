@@ -9,21 +9,3 @@
             </div>
         </div>
     </div>
-
-    <script>
-   
-        $(document).ready(function() {
-            var text = ['Edit the theme to change this rotating text and insert your logo','Include <%= search.q %> to appear here','Displaying <%= limit %> tweets at a time'];
-            $('#logo-text').text(text[0]).fadeIn('slow');
-            var index = 0;
-            setInterval(function() {
-                $('#logo-text').fadeOut('slow',function() {
-                    index = (1+index)%text.length;
-                    $('#logo-text').text(text[index]);
-                    $('#logo-text').fadeIn('slow')
-                })
-            },5000);
-        });
-    </script>
-
-    
