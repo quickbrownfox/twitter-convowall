@@ -46,7 +46,7 @@ Convowall = (function($) {
         loadTheme: function(theme) {
             this.loadThemeJS(theme);
             this.loadThemeCSS(theme);
-            var url =this.o.theme_path+'/themes/'+this.o.theme+'/page.html.ejs';
+            var url = this.o.theme_path+'/themes/'+this.o.theme+'/page.html.ejs';
             var page = new EJS({
                 url: url
             }).render(this.o);
@@ -60,13 +60,22 @@ Convowall = (function($) {
         },
 
         loadThemeCSS: function(theme) {
+            var that = this;
             var url = this.o.theme_path+'/themes/'+theme+'/theme.css';
-            $.get(url, function(css) {
+            $.ajax({
+                url: url,
+                dataType: 'html',
+                success: function(css,textStatus,xhr) {
+                    $('<style type="text/css"></style>')
+                    .html(css)
+                    .appendTo("head");
+                },
+                error: function(xhr,textStatus,errorThrown) {
+                    alert('The theme \''+theme+'\' failed to load. Please check that the theme folder exists within '+that.o.theme_path+'.\n\nThe error thrown was:\n '+errorThrown);
+                }
+            });
 
-                $('<style type="text/css"></style>')
-                .html(css)
-                .appendTo("head");
-            },'html');
+           
         },
 
         update: function() {
