@@ -1,6 +1,7 @@
 Convowall.option({
+    limit: 50,
     search: {
-        q:'bieber twitpic'
+        q:'libya twitpic OR picplz OR yfrog OR instagr.am'
     }
 })
 
@@ -11,10 +12,14 @@ $(document).ready(function() {
     $('a.embedly').livequery(function() {
         var that = this;
         var href = $(this).attr('href');
-        $.embedly(href,{maxWidth:250,maxHeight:250},function(oembed,dict) {
-            // url, width, height description, thumbnail_url
-            var img = $('<img></img>').attr('src',oembed.thumbnail_url).attr('width',oembed.thumbnail_width).attr('height',oembed.thumbnail_height);
-            $(that).html(img);
+        $.embedly(href,{
+            maxWidth:250,
+            maxHeight:250
+        },function(oembed,dict) {
+            if(oembed.thumbnail_url) {
+                var img = $('<img></img>').attr('src',oembed.thumbnail_url).attr('width',oembed.thumbnail_width).attr('height',oembed.thumbnail_height);
+                $(that).html($('<span></span>').html(img).append(oembed.description));
+            } 
         });
     });
     var text = ['This is the Photo theme for Convowall','Edit the theme to change this rotating text, the Twitter search query, and to insert your logo'];

@@ -23,13 +23,19 @@ body
 .entry {
     display: block;
     float: left;
+}
+.entry span  {
+    display: block;
     width:180px;
-    height: 180px;
+    height: 220px;
     margin-right: 5px;
     margin-bottom:5px;
     background: #000;
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
 }
-.entry img {
+.entry span img {
     background: #fff;
     padding: 10px;
 }
