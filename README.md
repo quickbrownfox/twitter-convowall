@@ -15,6 +15,9 @@ The following options can be used in the call to convowall() to customize the wa
         q - The Twitter search query.  See the Twitter Search API for the query format.
         lang - Limit tweets to a specific language.  Defaults to English ('en').
 
+# Running locally
+
+
 # Themes
 
 

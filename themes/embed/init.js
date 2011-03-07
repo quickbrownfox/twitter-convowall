@@ -1,7 +1,7 @@
 Convowall.option({
     limit: 50,
     search: {
-        q:'libya twitpic OR picplz OR yfrog OR tweetphoto'
+        q:'twitpic OR picplz OR yfrog OR tweetphoto'
     }
 })
 
@@ -16,10 +16,7 @@ $(document).ready(function() {
             maxWidth:250,
             maxHeight:250
         },function(oembed,dict) {
-            if(oembed.thumbnail_url) {
-                var img = $('<img></img>').attr('src',oembed.thumbnail_url).attr('width',oembed.thumbnail_width).attr('height',oembed.thumbnail_height);
-                $(that).html($('<span></span>').html(img).append(oembed.description));
-            } 
+            $(that).html(oembed.code);
         });
     });
     var text = ['This is the Photo theme for Convowall','Edit the theme to change this rotating text, the Twitter search query, and to insert your logo'];
@@ -33,4 +30,4 @@ $(document).ready(function() {
         })
     },5000);
 });
-        
+
