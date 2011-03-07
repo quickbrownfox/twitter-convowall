@@ -15,7 +15,7 @@ Convowall = (function($) {
                 lang: 'en'
             },
             limit: 10,
-            theme: 'shorty',
+            theme: 'keynote',
             theme_path: base + '/themes',
             interval: 3000,
         },
