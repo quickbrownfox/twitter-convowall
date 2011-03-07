@@ -17,7 +17,7 @@ Convowall = (function($) {
             limit: 10,
             theme: 'keynote',
             theme_path: base + '/themes',
-            interval: 3000,
+            interval: 3000
         },
 
         timeout: null,
@@ -125,7 +125,7 @@ Convowall = (function($) {
                 q:'',
                 lang:'en',
                 rpp:10,
-                since_id:-1,
+                since_id:-1
             },o);
             var url = "http://search.twitter.com/search.json?q=" + s.q + "&lang=" + s.lang + "&rpp=" + s.rpp + "&since_id=" + s.since_id + "&callback=?";
             $.getJSON(url, function(json) {
