@@ -20,19 +20,18 @@ body
 }
 
 
-.entry
-{
+.entry {
     display: block;
-    background: #000;
-    clear: both;
-    padding: .6em 0 .6em 9px;
-    margin: .3em 0;
-}
-.entry img
-{
     float: left;
-    border: 2px solid #222;
+    width:180px;
+    height: 180px;
+    margin-right: 5px;
+    margin-bottom:5px;
     background: #000;
+}
+.entry img {
+    background: #fff;
+    padding: 10px;
 }
 .entry p.text
 {
