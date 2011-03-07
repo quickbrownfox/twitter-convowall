@@ -2,7 +2,11 @@
 
 
 Convowall = (function($) {
+    var base = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
 
+    $.getScript(base+'/js/lib/jquery.dump.js');
+    $.getScript(base+'/js/lib/ejs.js');
+    $.getScript(base+'/js/lib/view.js');
 
     Convowall = {
         o: {
@@ -12,7 +16,7 @@ Convowall = (function($) {
             },
             limit: 10,
             theme: 'shorty',
-            theme_path: window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/')),
+            theme_path: base + '/themes',
             interval: 3000,
         },
 
@@ -46,7 +50,7 @@ Convowall = (function($) {
         loadTheme: function(theme) {
             this.loadThemeJS(theme);
             this.loadThemeCSS(theme);
-            var url = this.o.theme_path+'/themes/'+this.o.theme+'/page.html.ejs';
+            var url = this.o.theme_path+'/'+this.o.theme+'/page.html.ejs';
             var page = new EJS({
                 url: url
             }).render(this.o);
@@ -55,13 +59,13 @@ Convowall = (function($) {
         },
 
         loadThemeJS: function(theme) {
-            var url = this.o.theme_path+'/themes/'+theme+'/init.js';
+            var url = this.o.theme_path+'/'+theme+'/init.js';
             $.getScript(url);
         },
 
         loadThemeCSS: function(theme) {
             var that = this;
-            var url = this.o.theme_path+'/themes/'+theme+'/theme.css';
+            var url = this.o.theme_path+'/'+theme+'/theme.css';
             $.ajax({
                 url: url,
                 dataType: 'html',
@@ -81,7 +85,7 @@ Convowall = (function($) {
         update: function() {
             var that = this;
             var elem = this.elem;
-            var template = this.o.theme_path+'/themes/'+this.o.theme+'/entry.html.ejs';
+            var template = this.o.theme_path+'/'+this.o.theme+'/entry.html.ejs';
            
             var ejs = new EJS({
                 url: template
