@@ -1,12 +1,14 @@
-
-
-
 Convowall = (function($) {
-    var base = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
 
-    $.getScript(base+'/js/lib/jquery.dump.js');
-    $.getScript(base+'/js/lib/ejs.js');
-    $.getScript(base+'/js/lib/view.js');
+    // Would be nice if AJAX could use .. when run using file:// urls
+    
+    var scripts = document.getElementsByTagName("script"),
+    src = scripts[scripts.length-1].src;
+    base = src.substring(0,src.lastIndexOf('/'));
+
+    $.getScript(base+'/lib/jquery.dump.js');
+    $.getScript(base+'/lib/ejs.js');
+    $.getScript(base+'/lib/view.js');
 
     Convowall = {
         o: {
@@ -16,7 +18,7 @@ Convowall = (function($) {
             },
             limit: 10,
             theme: 'keynote',
-            theme_path: base + '/themes',
+            theme_path: base + '/../themes',
             interval: 3000
         },
 
@@ -75,7 +77,7 @@ Convowall = (function($) {
                     .appendTo("head");
                 },
                 error: function(xhr,textStatus,errorThrown) {
-                    alert('The theme \''+theme+'\' failed to load. Please check that the theme folder exists within '+that.o.theme_path+'.\n\nThe error thrown was:\n '+errorThrown);
+                    alert('The url '+ url+' for theme \''+theme+'\' failed to load. Please check that the theme folder exists within '+that.o.theme_path+'.\n\nThe error thrown was:\n '+errorThrown);
                 }
             });
 
