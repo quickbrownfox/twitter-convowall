@@ -2,3 +2,8 @@
 <p class="text"><%= text %>
 <span class="who"><%= from_user %></span>
 </p>
+<%=
+$.map(urls,function(url) {
+    return '<a class="embedly" href="'+url+'">'+url+'</a>';
+})
+%>

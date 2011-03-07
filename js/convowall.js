@@ -1,3 +1,8 @@
+
+String.prototype.urls = function () {
+    return this.match(/http:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&\?\/.=]+/g);
+};
+
 Convowall = (function($) {
 
     // Would be nice if AJAX could use .. when run using file:// urls
@@ -22,7 +27,10 @@ Convowall = (function($) {
             interval: 3000
         },
 
+        // The current Javascript timeout
         timeout: null,
+
+        // The jQuery element containing the Convowall
         elem: null,
 
         init: function(s,elem) {
@@ -102,12 +110,13 @@ Convowall = (function($) {
                 });
 
                 $(results.reverse()).each(function(i,result) {
-                  
+
+                    // Add extra fields for use by the view
                     var entry_date = new Date(Date.parse(result.created_at));
                     var data = $.extend(result,{
                         date: entry_date,
+                        urls: result.text.urls()
                     });
-                  
                     var entry = ejs.render(data);
                     var div = $('<div></div>').addClass('entry').html(entry).hide();
                     elem.prepend(div);
@@ -117,7 +126,7 @@ Convowall = (function($) {
                 });
 
             });
-            setTimeout(function () {
+            timeout = setTimeout(function () {
                 that.update();
             }, this.o.interval);
         },
@@ -129,7 +138,7 @@ Convowall = (function($) {
                 rpp:10,
                 since_id:-1
             },o);
-            var url = "http://search.twitter.com/search.json?q=" + s.q + "&lang=" + s.lang + "&rpp=" + s.rpp + "&since_id=" + s.since_id + "&callback=?";
+            var url = "http://search.twitter.com/search.json?q=" + encodeURIComponent(s.q) + "&lang=" + s.lang + "&rpp=" + s.rpp + "&since_id=" + s.since_id + "&callback=?";
             $.getJSON(url, function(json) {
                 if (json && json.results) success(json.results);
             });

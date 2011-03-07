@@ -3,27 +3,9 @@
     <div id="logo">
         <div id="logo-content">
             <div id="logo-img">
-                <img src="http://shortyawards.com/images/logo.png" width="100">
+                <img src="http://placehold.it/100x100" width="100" height="100" />
             </div>
             <div id="logo-text" style="display:none">
             </div>
         </div>
     </div>
-
-    <script>
-   
-        $(document).ready(function() {
-            var text = ['What people are saying about the Shorty Awards','Send a tweet containing #shortyawards or Shorty Awards to appear here','Check in to TheTimesCenter on Foursquare for a special badge'];
-            $('#logo-text').text(text[0]).fadeIn('slow');
-            var index = 0;
-            setInterval(function() {
-                $('#logo-text').fadeOut('slow',function() {
-                    index = (1+index)%text.length;
-                    $('#logo-text').text(text[index]);
-                    $('#logo-text').fadeIn('slow')
-                })
-            },5000);
-        });
-    </script>
-
-    
