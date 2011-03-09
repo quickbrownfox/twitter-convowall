@@ -13,9 +13,9 @@ Convowall = (function($) {
     base = src.substring(0,src.lastIndexOf('/'));
 
     $.getScript(base+'/lib/jquery.dump.js');
-    $.getScript(base+'/lib/ejs.js');
     $.getScript(base+'/lib/view.js');
     $.getScript(base+'/lib/jquery.embedly.min.js');
+
 
     Convowall = {
         o: {
@@ -40,12 +40,15 @@ Convowall = (function($) {
         elem: null,
 
         init: function(s,elem) {
+            var that = this;
             this.elem = elem;
             this.o = $.extend(this.o,s);
-            if (this.o.theme) {
-                this.loadTheme(this.o.theme);
-            }
-            this.start();
+            $.getScript(base+'/lib/ejs.js',function() {
+                if (that.o.theme) {
+                    that.loadTheme(that.o.theme);
+                }
+                that.start();
+            });
         },
 
         option: function(k,v) {
@@ -59,6 +62,7 @@ Convowall = (function($) {
         },
 
         start: function() {
+            if(this.timeout) clearTimeout(this.timeout);
             this.o.search.rpp = this.o.limit;
             this.update();
         },
@@ -115,8 +119,9 @@ Convowall = (function($) {
                 var ejs = new EJS({
                     url: template
                 });
-
+              
                 var div = $('<div></div>').addClass('entry').html(ejs.render(data)).hide();
+             
                 elem.prepend(div);
                 div.fadeIn('slow');
             };
@@ -144,7 +149,7 @@ Convowall = (function($) {
                 //that.o.search.rpp = 1;
                
                 hideEntries();
-
+              
                 $(results.reverse()).each(function(i,result) {
                     // Add extra fields for use by the view
                     var entry_date = new Date(Date.parse(result.created_at));

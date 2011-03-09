@@ -37,14 +37,14 @@ and rotating messages.  The Photo theme displays several Twitter photo services 
 
 Each theme is defined using Javascript, CSS, and [Embedded Javascript](http://embeddedjs.com/) templates.  Themes consist of these files:
 
-* *init.js* - Sets options for the theme and defines Javascript code that is executed when the theme is loaded.  You can call Convowall.option() from within this file to set default options for a theme, which can subsequently be overridden by the page containing the convowall.
+* *init.js* - Sets options for the theme and defines Javascript code that is executed when the theme is loaded.  
 * *theme.css* - CSS styles for the theme
 * *entry.html.ejs* - The HTML for each entry on the convowall
 * *page.html.ejs* - The HTML for the page or wrapper for the convowall
 
 # Variables available in themes
 
-The theme file entry.html.ejs is the template for each tweet's output.  Many of the variables correspond directly to those provided by the Twitter Search API.  The variables include:
+The theme file entry.html.ejs is the template for each tweet's output.  Many of the variables correspond directly to those provided by  from the Twitter Search API.  The variables include:
 
 * *text* - text of the tweet
 * *text_only* - text of the tweet with URLs stripped

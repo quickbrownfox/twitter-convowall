@@ -1,13 +1,3 @@
-Convowall.option({
-    limit: 52,
-    search: {
-        q:'celebrity twitpic OR picplz OR yfrog OR tweetphoto'
-    },
-    embedly: {
-        maxWidth: 200,
-        maxHeight: 200
-    }
-})
 
 
 $(document).ready(function() {
