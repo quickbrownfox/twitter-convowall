@@ -53,7 +53,7 @@ The theme file entry.html.ejs is the template for each tweet's output.  Many of 
 * _urls_ - an array containing all URLs found in the tweet text
 * _from_user_ - the Twitter username of the tweet's sender
 * _id_str_ - string containing tweet id from Twitter Search API
-* _oembed_ - am object containing output from [Embedly](https//github.com/embedly/embedly-jquery) or an empty object, if no embeds found.  Currently, only the first link present in the Tweet is passed to Embedly.
+* _oembed_ - am object containing output from [Embedly](https//github.com/embedly/embedly-jquery) or an empty object, if no embeds found.  Only the first link present in the Tweet is passed to Embedly.
 
         Object {
             provider_url: "http://twitpic.com"
