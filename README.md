@@ -8,7 +8,7 @@ options and multiple themes.
 
 In your HTML page, load jQuery and convowall.js.  Add the wall to your page with a call to $.convowall like this:
 
-   $(function() {
+    $(function() {
             $('body').convowall({
                 theme: 'shortyawards',
                 interval: 2000,
@@ -21,13 +21,13 @@ In your HTML page, load jQuery and convowall.js.  Add the wall to your page with
 
 The following options can be used in the call to $.convowall to customize the wall:
 
-* theme - Choose any of the themes from the themes/ directory.
-* interval - How long to wait between each call to the Twitter Search API, in microseconds.
-* limit - The maximum number of tweets to display on the screen.  Adjust this based on your theme's font size and resultion of your screen.
-* search - A hash of search option which are passed to the Twitter search API.  These options include:
-    * q - The Twitter search query.  See the [Twitter Search API documentation][http://apiwiki.twitter.com/w/page/22554756/Twitter-Search-API-Method:-search_] for example queries.
-    * lang - Limit tweets to a specific language.  Defaults to English ('en').
-* embedly - Options for parsing links using [Embedly](https//github.com/embedly/embedly-jquery).  See the Embedly jQuery documentation for available options.
+* *theme* - Choose any of the themes from the themes/ directory.
+* *interval* - How long to wait between each call to the Twitter Search API, in microseconds.
+* *limit* - The maximum number of tweets to display on the screen.  Adjust this based on your theme's font size and resultion of your screen.
+* *search* - A hash of search option which are passed to the Twitter search API.  These options include:
+    * *q* - The Twitter search query.  See the [Twitter Search API documentation][http://apiwiki.twitter.com/w/page/22554756/Twitter-Search-API-Method:-search_] for example queries.
+    * *lang* - Limit tweets to a specific language.  Defaults to English ('en').
+* *embedly* - Options for parsing links using [Embedly](https//github.com/embedly/embedly-jquery).  See the Embedly jQuery documentation for available options.  If you want to bypass Embedly, you can set this option to null.
 
 
 # Themes
@@ -37,23 +37,23 @@ and rotating messages.  The Photo theme displays several Twitter photo services 
 
 Each theme is defined using Javascript, CSS, and [Embedded Javascript](http://embeddedjs.com/) templates.  Themes consist of these files:
 
-* init.js - Sets options for the theme and defines Javascript code that is executed when the theme is loaded.  You can call Convowall.option() from within this file to set default options for a theme, which can subsequently be overridden by the page containing the convowall.
-* theme.css - CSS styles for the theme
-* entry.html.ejs - The HTML for each entry on the convowall
-* page.html.ejs - The HTML for the page or wrapper for the convowall
+* *init.js* - Sets options for the theme and defines Javascript code that is executed when the theme is loaded.  You can call Convowall.option() from within this file to set default options for a theme, which can subsequently be overridden by the page containing the convowall.
+* *theme.css* - CSS styles for the theme
+* *entry.html.ejs* - The HTML for each entry on the convowall
+* *page.html.ejs* - The HTML for the page or wrapper for the convowall
 
 # Variables available in themes
 
-The theme file entry.html.ejs is the template for each tweet's output.  Most of the variables correspond directly with results from the Twitter Search API.  The variables include:
+The theme file entry.html.ejs is the template for each tweet's output.  Many of the variables correspond directly to those provided by the Twitter Search API.  The variables include:
 
-* text - text of the tweet
-* text_only - text of the tweet with URLs stripped
-* profile_image_url
-* date - a Javascript Date object
-* urls - an array containing all URLs found in the tweet text
-* from_user - the Twitter username of the tweet's sender
-* id_str - string containing tweet id from Twitter Search API
-* oembed - am object containing output from [Embedly](https//github.com/embedly/embedly-jquery) or an empty object, if no embeds found
+* *text* - text of the tweet
+* *text_only* - text of the tweet with URLs stripped
+* *profile_image_url* - The sender's Twitter avatar image.
+* *date* - a Javascript Date object
+* *urls* - an array containing all URLs found in the tweet text
+* *from_user* - the Twitter username of the tweet's sender
+* *id_str* - string containing tweet id from Twitter Search API
+* *oembed* - am object containing output from [Embedly](https//github.com/embedly/embedly-jquery) or an empty object, if no embeds found
 
     Object { 
 	provider_url: "http://twitpic.com"
