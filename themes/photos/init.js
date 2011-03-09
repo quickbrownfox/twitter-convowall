@@ -1,5 +1,5 @@
 Convowall.option({
-    limit: 50,
+    limit: 52,
     search: {
         q:'celebrity twitpic OR picplz OR yfrog OR tweetphoto'
     },
