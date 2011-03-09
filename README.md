@@ -32,7 +32,7 @@ The following options can be used in the call to $.convowall to customize the wa
 
 # Themes
 
-Several example themes are included. The Keynote theme is designed to match the look of [http://www.apple.com/iwork/keynote/](Keynote), and has a slot for a custom logo
+Several example themes are included. The Keynote theme is designed to match the look of [Apple's Keynote application](http://www.apple.com/iwork/keynote/), and has a slot for a custom logo
 and rotating messages.  The Photo theme displays several Twitter photo services as Polaroid-style thumbnails.
 
 Each theme is defined using Javascript, CSS, and [Embedded Javascript](http://embeddedjs.com/) templates.  Themes consist of these files:
@@ -84,7 +84,7 @@ Aside from these errors, Convowall does work locally in Firefox, while Chrome ha
 # Going full screen
 
 In OS X, Firefox 3.6 has an almost-perfect full screen option, but leaves a narrow band of a few pixels at the top.  To solve this problem, get the
-(Full Fullscreen)[https://addons.mozilla.org/en-us/firefox/addon/full-fullscreen/] Firefox plugin, and adjust its options so that it hides
+[Full Fullscreen](http://addons.mozilla.org/en-us/firefox/addon/full-fullscreen/) Firefox plugin, and adjust its options so that it hides
 browser tabs.  You can then run this in OS X in true full-screen mode.
 
 # Author
