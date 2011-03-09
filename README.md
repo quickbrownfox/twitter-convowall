@@ -42,6 +42,14 @@ Each theme is defined using Javascript, CSS, and [Embedded Javascript](http://em
 * __entry.html.ejs__ - The HTML for each entry on the convowall
 * __page.html.ejs__ - The HTML for the page or wrapper for the convowall
 
+EJS templates are similar to PHP or ERB templates.  A simple template for an entry might look like this:
+
+    <img src="http://img.tweetimag.es/i/<%= from_user %>_n" width="73" height="73" />
+    <p class="text"><%= text %>
+    <span class="who"><%= from_user %></span>
+    </p>
+
+
 # Variables available in themes
 
 The theme file entry.html.ejs is the template for each tweet's output.  Many of the variables correspond directly to those provided by  from the Twitter Search API.  The variables include:
