@@ -3,6 +3,7 @@ String.prototype.urls = function () {
     return this.match(/http:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&\?\/.=]+/g);
 };
 
+
 Convowall = (function($) {
 
     // Would be nice if AJAX could use .. when run using file:// urls
@@ -149,7 +150,8 @@ Convowall = (function($) {
                     var entry_date = new Date(Date.parse(result.created_at));
                     var data = $.extend(result,{
                         date: entry_date,
-                        urls: result.text.urls()
+                        urls: result.text.urls(),
+                        text_only: result.text.replace(/http:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&\?\/.=]+/g,'')
                     });
 
                     that.o.embedly ? processEmbeds(data,showEntry) : showEntry(data);

@@ -24,38 +24,27 @@ body
     display: block;
     float: left;
 }
-.entry span  {
+.entry .photo  {
     display: block;
-    width:180px;
-    height: 220px;
-    margin-right: 5px;
-    margin-bottom:5px;
+    width:230px;
+    height: 300px;
+    margin-right: 10px;
+    margin-bottom: 10px;
     background: #000;
-    font-size: 14px;
+    font-size: 13px;
     text-align: center;
     overflow: hidden;
 }
-.entry span img {
+.entry .photo img {
     background: #fff;
     padding: 10px;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 5px;
 }
-.entry p.text
-{
-    margin: 0;
-    padding: 0;
-    padding-left: 100px;
-    padding-right:30px;
-    line-height: 40px;
+.entry .who {
+    color: #666
 }
-.entry .who, .who a {
-    color:#555;
-    text-decoration:
-    none;font-weight: normal;
-}
-
-
 
 #logo {
     position:fixed;

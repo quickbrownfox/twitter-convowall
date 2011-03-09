@@ -1,5 +1,7 @@
 <% if (oembed && oembed.thumbnail_url) { %>
-<span class="thumbnail">
+<div class="photo">
     <img src="<%= oembed.thumbnail_url %>" width="<%= oembed.thumbnail_width %>" height="<%= oembed.thumbnail_height %>" />
-</span>
+    <span class="who">@<%= from_user %></span>
+    <%= text_only %>
+</div>
 <% } %>

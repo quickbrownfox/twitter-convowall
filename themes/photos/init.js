@@ -4,8 +4,8 @@ Convowall.option({
         q:'celebrity twitpic OR picplz OR yfrog OR tweetphoto'
     },
     embedly: {
-        maxWidth: 150,
-        maxHeight: 150
+        maxWidth: 200,
+        maxHeight: 200
     }
 })
 
