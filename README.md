@@ -15,8 +15,11 @@ The following options can be used in the call to convowall() to customize the wa
         q - The Twitter search query.  See the Twitter Search API for the query format.
         lang - Limit tweets to a specific language.  Defaults to English ('en').
 
-# Running locally
+# Running locally 
 
+It is best to run this through a web server, rather than from file:// urls locally.  When executing locally from the filesystem, I have noticed "not well formed" errors
+when loading JavaScript files through $.getScript in Firefox.  Aside from these errors, it does work locally via Firefox, while Chrome has security restrictions which
+prevent this from running locally.
 
 # Themes
 

@@ -6,7 +6,7 @@ String.prototype.urls = function () {
 Convowall = (function($) {
 
     // Would be nice if AJAX could use .. when run using file:// urls
-    
+
     var scripts = document.getElementsByTagName("script"),
     src = scripts[scripts.length-1].src;
     base = src.substring(0,src.lastIndexOf('/'));
@@ -14,6 +14,7 @@ Convowall = (function($) {
     $.getScript(base+'/lib/jquery.dump.js');
     $.getScript(base+'/lib/ejs.js');
     $.getScript(base+'/lib/view.js');
+    $.getScript(base+'/lib/jquery.embedly.min.js');
 
     Convowall = {
         o: {
@@ -24,7 +25,11 @@ Convowall = (function($) {
             limit: 10,
             theme: 'keynote',
             theme_path: base + '/../themes',
-            interval: 3000
+            interval: 3000,
+            embedly: {
+                maxWidth: 250,
+                maxHeight: 250
+            }
         },
 
         // The current Javascript timeout
@@ -65,7 +70,7 @@ Convowall = (function($) {
                 url: url
             }).render(this.o);
             $('body').append($(page));
-           
+
         },
 
         loadThemeJS: function(theme) {
@@ -89,46 +94,76 @@ Convowall = (function($) {
                 }
             });
 
-           
+
         },
 
         update: function() {
             var that = this;
             var elem = this.elem;
-            var template = this.o.theme_path+'/'+this.o.theme+'/entry.html.ejs';
-           
-            var ejs = new EJS({
-                url: template
-            });
 
-            this.search(this.o.search, function(results) {
-                if (!results || results.length == 0) return;
-                that.o.search.since_id = results[0].id_str;
-                that.o.search.rpp = 1;
+            var template = that.o.theme_path+'/'+that.o.theme+'/entry.html.ejs';
+           
+            function hideEntries() {
                 $(elem).find('.entry:gt('+ (that.o.limit-2) + ')').each(function () {
                     $(this).fadeOut('slow')
                 });
 
-                $(results.reverse()).each(function(i,result) {
+            };
 
+            function showEntry(data) {
+                var ejs = new EJS({
+                    url: template
+                });
+
+                var div = $('<div></div>').addClass('entry').html(ejs.render(data)).hide();
+                elem.prepend(div);
+                div.fadeIn('slow');
+            };
+
+            function processEmbeds(data, complete) {
+                data.oembed = {};
+                if (data.urls && data.urls.length > 0) {
+                    var opts = that.o.embedly;
+                    opts.success = function(oembed,dict) {
+                        data.oembed = oembed;
+                        complete(data);
+                    }
+                    var url = data.urls[0];
+                    if (url.match(window.embedlyURLre)) {
+                        $.embedly(url,opts);
+                        return;
+                    }
+                }
+                complete(data);
+            };
+
+            this.search(this.o.search, function(results) {
+                if (!results || results.length == 0) return;
+
+                that.o.search.rpp = 1;
+               
+                hideEntries();
+
+                $(results.reverse()).each(function(i,result) {
                     // Add extra fields for use by the view
                     var entry_date = new Date(Date.parse(result.created_at));
                     var data = $.extend(result,{
                         date: entry_date,
                         urls: result.text.urls()
                     });
-                    var entry = ejs.render(data);
-                    var div = $('<div></div>').addClass('entry').html(entry).hide();
-                    elem.prepend(div);
+
+                    that.o.embedly ? processEmbeds(data,showEntry) : showEntry(data);
                     
-                    div.fadeIn('slow');
-                    
+                    // Subsequent searches start after this result
+                    that.o.search.since_id = result.id_str;
                 });
 
             });
+            /*
             timeout = setTimeout(function () {
                 that.update();
             }, this.o.interval);
+             */
         },
 
         search: function(o,success) {
@@ -142,7 +177,7 @@ Convowall = (function($) {
             $.getJSON(url, function(json) {
                 if (json && json.results) success(json.results);
             });
-           
+
         }
     };
 

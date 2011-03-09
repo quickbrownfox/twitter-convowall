@@ -38,6 +38,8 @@ body
 .entry span img {
     background: #fff;
     padding: 10px;
+    width: 150px;
+    height: 150px;
 }
 .entry p.text
 {
