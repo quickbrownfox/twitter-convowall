@@ -140,7 +140,7 @@ Convowall = (function($) {
             this.search(this.o.search, function(results) {
                 if (!results || results.length == 0) return;
 
-                that.o.search.rpp = 1;
+                //that.o.search.rpp = 1;
                
                 hideEntries();
 
@@ -159,11 +159,11 @@ Convowall = (function($) {
                 });
 
             });
-            /*
+           
             timeout = setTimeout(function () {
                 that.update();
             }, this.o.interval);
-             */
+           
         },
 
         search: function(o,success) {
