@@ -35,7 +35,7 @@ The following options can be used in the call to $.convowall to customize the wa
 * __search__ - A hash of search option which are passed to the Twitter search API.  These options include:
     * __q__ - The Twitter search query.  See the [Twitter Search API documentation](http://apiwiki.twitter.com/w/page/22554756/Twitter-Search-API-Method:-search_) for example queries.
     * __lang__ - Limit tweets to a specific language.  Defaults to English ('en').
-* __embedly__ - Options for parsing links using [Embedly](https//github.com/embedly/embedly-jquery).  See the Embedly jQuery documentation for available options.  If you want to bypass Embedly, you can set this option to null.
+* __embedly__ - Options for parsing links using [Embedly](http://github.com/embedly/embedly-jquery).  See the Embedly jQuery documentation for available options.  If you want to bypass Embedly, you can set this option to null.
 * __reset__ - Number of minutes after which to reload the page. If you plan on running this for a long time (the length of a whole party) you may want to set this option to automatically refresh the page in case the browser gets stuck due to memory leaks or other problems that may occur when running Javascript over a long period of time.
 
 # Themes
