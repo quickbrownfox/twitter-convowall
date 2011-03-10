@@ -173,7 +173,7 @@ Convowall = (function($) {
                 });
 
             });
-           
+
             timeout = setTimeout(function () {
                 that.update();
             }, this.o.interval);
@@ -190,13 +190,13 @@ Convowall = (function($) {
             },o);
           
             var url = "http://search.twitter.com/search.json";
-          ;
+         
             if (s.refresh_url) {
                 url += s.refresh_url + '&lang=' + s.lang + '&rpp=' + s.rpp + '&callback=?';
             } else {
                 url += "?result_type=recent&q=" + encodeURIComponent(s.q) + "&lang=" + s.lang + "&rpp=" + s.rpp + "&since_id=" + s.since_id + "&callback=?";
             }
-           
+         
             $.getJSON(url, function(json) {
                 if (json && json.results) success(json);
             });
