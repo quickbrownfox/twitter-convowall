@@ -106,6 +106,8 @@ browser tabs.  You can then run this in OS X in true full-screen mode.
 # Notes
 
 Due to how Twitter search works, not all tweets are guaranteed to display.
+You probably _don't_ want to use this for anything mission-critical, like, for instance,
+monitoring a patient's vital signs, or for trading securites at your hedge fund based on Twitter sentiment.
 
 # Author
 
