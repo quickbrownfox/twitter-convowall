@@ -62,7 +62,7 @@ EJS templates are similar to PHP or ERB templates.  A simple template for an ent
 
 # Variables available in themes
 
-The theme file entry.html.ejs is the template for each tweet's output.  Many of the variables correspond directly to those provided by  from the Twitter Search API.  The variables include:
+The theme file entry.html.ejs is the template for each tweet's output.  Many of the variables correspond directly to those provided by the Twitter Search API.  The variables include:
 
 * __text__ - text of the tweet
 * __text_only__ - text of the tweet with URLs stripped
