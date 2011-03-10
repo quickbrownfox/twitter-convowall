@@ -63,23 +63,23 @@ The theme file entry.html.ejs is the template for each tweet's output.  Many of 
 * __id_str__ - string containing tweet id from Twitter Search API
 * __oembed__ - am object containing output from [Embedly](https://github.com/embedly/embedly-jquery) or an empty object, if no embeds found.  Only the first link present in the Tweet is passed to Embedly.
 
-    Object {
-        provider_url: "http://twitpic.com"
-        description: "Tumblr, your failwhale is cute but you seem to go down far too often!"
-        title: "Tumblr, your failwhale is cute but you seem to go down far too often!"
-        url: "http://twitpic.com/show/full/479qy8"
-        author_name: "jeremybrown"
-        height: 563
-        width: 600
-        thumbnail_url: "http://twitpic.com/show/thumb/479qy8"
-        thumbnail_width: 150
-        version: "1.0"
-        provider_name: "Twitpic"
-        type: "photo"
-        thumbnail_height: 150
-        author_url: "http://twitpic.com/photos/jeremybrown"
-        code: "<div class="embed"><a href='http://twitpic.com/479qy8' target='_blank'><img style='max-width: 200px;max-height: 200px' src='http://twitpic.com/show/full/479qy8' alt='Tumblr, your failwhale is cute but you seem to go down far too often!' /></a></div>"
-    }
+        Object {
+            provider_url: "http://twitpic.com"
+            description: "Tumblr, your failwhale is cute but you seem to go down far too often!"
+            title: "Tumblr, your failwhale is cute but you seem to go down far too often!"
+            url: "http://twitpic.com/show/full/479qy8"
+            author_name: "jeremybrown"
+            height: 563
+            width: 600
+            thumbnail_url: "http://twitpic.com/show/thumb/479qy8"
+            thumbnail_width: 150
+            version: "1.0"
+            provider_name: "Twitpic"
+            type: "photo"
+            thumbnail_height: 150
+            author_url: "http://twitpic.com/photos/jeremybrown"
+            code: "<div class="embed"><a href='http://twitpic.com/479qy8' target='_blank'><img style='max-width: 200px;max-height: 200px' src='http://twitpic.com/show/full/479qy8' alt='Tumblr, your failwhale is cute but you seem to go down far too often!' /></a></div>"
+        }
 
 
 # Running locally from the filesystem
