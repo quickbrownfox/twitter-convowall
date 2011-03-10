@@ -32,7 +32,8 @@ Convowall = (function($) {
             embedly: {
                 maxWidth: 250,
                 maxHeight: 250
-            }
+            },
+            reset: null
         },
 
         // The current Javascript timeout
@@ -51,6 +52,12 @@ Convowall = (function($) {
                 }
                 that.start();
             });
+            
+            if (this.o.reset) {
+                setTimeout(function() {
+                    window.location.reload();
+                }, this.o.reset);
+            }
         },
 
         option: function(k,v) {
