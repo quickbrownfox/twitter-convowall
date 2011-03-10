@@ -133,8 +133,10 @@ Convowall = (function($) {
                 if (data.urls && data.urls.length > 0) {
                     var opts = that.o.embedly;
                     opts.success = function(oembed,dict) {
-                        data.oembed = oembed;
-                        complete(data);
+                        if (oembed) {
+                            data.oembed = oembed;
+                            complete(data);
+                        }
                     }
                     var url = data.urls[0];
                     if (url.match(window.embedlyURLre)) {
