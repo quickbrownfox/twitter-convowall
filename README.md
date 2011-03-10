@@ -97,7 +97,7 @@ browser tabs.  You can then run this in OS X in true full-screen mode.
 
 # Notes
 
-Not all tweets are guaranteed to display.  Also, they may not display in the exact order they were tweeted.  
+Due to how Twitter search works, not all tweets are guaranteed to display.  
 
 # Author
 
