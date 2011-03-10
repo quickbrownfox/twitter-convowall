@@ -97,10 +97,9 @@ browser tabs.  You can then run this in OS X in true full-screen mode.
 
 # Notes
 
-Due to how Twitter search works, not all tweets are guaranteed to display.  
+Due to how Twitter search works, not all tweets are guaranteed to display.
 
 # Author
 
-[Lee Semel](http://leesemel.com)
-
+[Lee Semel](http://leesemel.com), ['hello','@','leesemel','.','com'].join('')
 
