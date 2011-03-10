@@ -10,6 +10,7 @@ body
     background: #000;
     height: 100%;
     overflow: hidden;
+    padding-top: 20px;
 }
 
 #cw_content {
