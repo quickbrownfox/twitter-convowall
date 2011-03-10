@@ -56,7 +56,7 @@ Convowall = (function($) {
             if (this.o.reset) {
                 setTimeout(function() {
                     window.location.reload();
-                }, this.o.reset);
+                }, this.o.reset*60*1000);
             }
         },
 

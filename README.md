@@ -22,13 +22,13 @@ In yoru HTML page, load jQuery and convowall.js.  Add the wall to your page with
 The following options can be used in the call to $.convowall to customize the wall:
 
 * __theme__ - Choose any of the themes from the themes/ directory.
-* __interval__ - How long to wait between each call to the Twitter Search API, in microseconds.
+* __interval__ - How long to wait between each call to the Twitter Search API, in milliseconds.
 * __limit__ - The maximum number of tweets to display on the screen.  Adjust this based on your theme's font size and resultion of your screen.
 * __search__ - A hash of search option which are passed to the Twitter search API.  These options include:
     * __q__ - The Twitter search query.  See the [Twitter Search API documentation](http://apiwiki.twitter.com/w/page/22554756/Twitter-Search-API-Method:-search_) for example queries.
     * __lang__ - Limit tweets to a specific language.  Defaults to English ('en').
 * __embedly__ - Options for parsing links using [Embedly](https//github.com/embedly/embedly-jquery).  See the Embedly jQuery documentation for available options.  If you want to bypass Embedly, you can set this option to null.
-
+* __reset__ - Number of minutes after which to reload the page. If you plan on running this for a long time (the length of a whole party) you may want to set this option to automatically refresh the page in case the browser gets stuck due to memory leaks or other problems that may occur when running Javascript over a long period of time.
 
 # Themes
 
