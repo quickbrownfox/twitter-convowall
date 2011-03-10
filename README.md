@@ -12,6 +12,8 @@ It has been generalized to allow for more flexible options and multiple themes.
 
 [That Internet Party Theme](http://lsemel.github.com/twitter-convowall/example_thatinternetparty.html) - Ready for SXSW, this wall shows tweets with inline embeds
 
+[Vanilla](http://lsemel.github.com/twitter-convowall/example_vanilla.html) - A plain vanilla theme, ideal for use in boring offices of conservative companies
+
 # Setting up a wall
 
 In yoru HTML page, load jQuery and convowall.js.  Add the wall to your page with a call to $.convowall, like this:
