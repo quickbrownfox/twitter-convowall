@@ -13,13 +13,6 @@ body
     padding-top: 20px;
 }
 
-#cw_content {
-    float: left;
-    width:100%;
-    margin: 5px;
-    overflow:hidden;
-}
-
 
 .entry {
     display: block;
