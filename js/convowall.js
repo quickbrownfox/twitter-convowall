@@ -21,7 +21,9 @@ Convowall = (function($) {
         o: {
             search: {
                 q:'#twitter or twitter',
-                lang: 'en'
+                lang: 'en',
+                refresh_url: null,
+                since_id: -1
             },
             limit: 10,
             theme: 'keynote',
@@ -143,26 +145,29 @@ Convowall = (function($) {
                 complete(data);
             };
 
-            this.search(this.o.search, function(results) {
-                if (!results || results.length == 0) return;
+            this.search(this.o.search, function(json) {
 
-                //that.o.search.rpp = 1;
-               
+                if (!json || !json.results || json.results.length == 0) return;
+
+                that.o.search.rpp = 1;
+                
                 hideEntries();
-              
-                $(results.reverse()).each(function(i,result) {
+
+                that.o.search.since_id = json.results[0].id_str;
+
+                $(json.results).each(function(i,result) {
                     // Add extra fields for use by the view
                     var entry_date = new Date(Date.parse(result.created_at));
                     var data = $.extend(result,{
                         date: entry_date,
                         urls: result.text.urls(),
-                        text_only: result.text.replace(/http:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&\?\/.=]+/g,'')
+                        text_only: result.text.replace(/http:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&\?\/.=]+/g,''),
+                        oembed: {}
                     });
 
                     that.o.embedly ? processEmbeds(data,showEntry) : showEntry(data);
-                    
-                    // Subsequent searches start after this result
-                    that.o.search.since_id = result.id_str;
+
+
                 });
 
             });
@@ -178,11 +183,20 @@ Convowall = (function($) {
                 q:'',
                 lang:'en',
                 rpp:10,
-                since_id:-1
+                since_id:-1,
+                refresh_url:null
             },o);
-            var url = "http://search.twitter.com/search.json?q=" + encodeURIComponent(s.q) + "&lang=" + s.lang + "&rpp=" + s.rpp + "&since_id=" + s.since_id + "&callback=?";
+          
+            var url = "http://search.twitter.com/search.json";
+          ;
+            if (s.refresh_url) {
+                url += s.refresh_url + '&lang=' + s.lang + '&rpp=' + s.rpp + '&callback=?';
+            } else {
+                url += "?result_type=recent&q=" + encodeURIComponent(s.q) + "&lang=" + s.lang + "&rpp=" + s.rpp + "&since_id=" + s.since_id + "&callback=?";
+            }
+           
             $.getJSON(url, function(json) {
-                if (json && json.results) success(json.results);
+                if (json && json.results) success(json);
             });
 
         }

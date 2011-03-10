@@ -95,6 +95,10 @@ In OS X, Firefox 3.6 has an almost-perfect full screen option, but leaves a narr
 [Full Fullscreen](http://addons.mozilla.org/en-us/firefox/addon/full-fullscreen/) Firefox plugin, and adjust its options so that it hides
 browser tabs.  You can then run this in OS X in true full-screen mode.
 
+# Notes
+
+Not all tweets are guaranteed to display.  Also, they may not display in the exact order they were tweeted.  
+
 # Author
 
 [Lee Semel](http://leesemel.com)
