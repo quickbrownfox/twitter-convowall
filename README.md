@@ -4,6 +4,14 @@ Convowall is an easy-to-customize, themeable, jQuery-based Twitter conversation 
 This is based on the Twitter walls we run at the [Shorty Awards](http://shortyawards.com), an awards competition and event that the New York Times has called "The Oscars for Twitter".
 It has been generalized to allow for more flexible options and multiple themes.
 
+# Examples
+
+[Keynote Theme](http://lsemel.github.com/twitter-convowall/example_shortyawards.html) - a basic wall displaying tweets matching a keyword
+
+[Photo Theme](http://lsemel.github.com/twitter-convowall/example_photos.html) - a wall that pulls only photos, and uses Embedly to grab the photo data and display it
+
+[That Internet Party Theme](http://lsemel.github.com/twitter-convowall/example_thatinternetparty.html) - Ready for SXSW, this wall shows tweets with inline embeds
+
 # Setting up a wall
 
 In yoru HTML page, load jQuery and convowall.js.  Add the wall to your page with a call to $.convowall, like this:
