@@ -1,0 +1,90 @@
+body,a
+{
+    font-family: "Gill Sans",Helvetica;
+    font-size: 24px;
+    color: #efefef;
+    text-decoration: none;
+}
+body
+{
+    background: #000;
+    height: 100%;
+    overflow: hidden;
+}
+
+#cw_content {
+    float: left;
+    width:100%;
+    margin: 5px;
+    overflow:hidden;
+}
+
+
+.entry
+{
+    display: block;
+    background: #000;
+    clear: both;
+    padding: .6em 0 .6em 9px;
+    margin: .3em 0;
+}
+.entry img
+{
+    float: left;
+    border: 2px solid #222;
+    background: #000;
+}
+.entry p.text
+{
+    margin: 0;
+    padding: 0;
+    padding-left: 100px;
+    padding-right:30px;
+    line-height: 30px;
+}
+.entry .who, .who a {
+    color:#555;
+    text-decoration:
+    none;font-weight: normal;
+}
+
+
+.embed {
+    margin-top: 5px;
+    padding-left:100px;
+    padding-bottom:20px;
+}
+.embed * {
+    font-size: 11px;
+}
+.embed img {
+    border: 5px solid #fff;
+}
+
+
+#logo {
+    position:fixed;
+    bottom:0px;
+    background:url(themes/keynote/gradient.png) top left repeat-x;
+    width:100%;
+    height:220px;
+    z-index:99;
+}
+#logo-img {
+    float:left;
+}
+#logo-content {
+    padding-left:5px;
+    padding-top:110px;
+}
+#logo-text {
+    margin-top:30px;
+    margin-left:20px;
+    margin-bottom:5px;
+    padding-bottom:3px;
+    float:left;
+}
+#logo-knight {
+    margin-top:25px;
+    margin-right:30px;
+}

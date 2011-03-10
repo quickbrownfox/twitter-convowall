@@ -137,7 +137,7 @@ Convowall = (function($) {
                             data.oembed = oembed;
                             complete(data);
                         }
-                    }
+                    };
                     var url = data.urls[0];
                     if (url.match(window.embedlyURLre)) {
                         $.embedly(url,opts);
